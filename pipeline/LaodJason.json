@@ -1,0 +1,128 @@
+{
+	"name": "LaodJason",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['City']"
+								},
+								"sink": {
+									"name": "City"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Coordinates']['Latitude']"
+								},
+								"sink": {
+									"name": "Latitude"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Coordinates']['Longitude']"
+								},
+								"sink": {
+									"name": "Longitude"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Census']['Population']"
+								},
+								"sink": {
+									"name": "Population"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Census']['Municipality']"
+								},
+								"sink": {
+									"name": "Municipality"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Census']['Region']"
+								},
+								"sink": {
+									"name": "Region"
+								}
+							},
+							{
+								"source": {
+									"path": "$['offices'][0]['officeName']"
+								},
+								"sink": {
+									"name": "officeName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['offices'][0]['address']"
+								},
+								"sink": {
+									"name": "address"
+								}
+							}
+						],
+						"mapComplexValuesToString": true
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

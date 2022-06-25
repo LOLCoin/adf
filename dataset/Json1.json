@@ -1,0 +1,65 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Input.JSON",
+				"container": "test"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"City": {
+					"type": "string"
+				},
+				"Coordinates": {
+					"type": "object",
+					"properties": {
+						"Latitude": {
+							"type": "integer"
+						},
+						"Longitude": {
+							"type": "integer"
+						}
+					}
+				},
+				"Census": {
+					"type": "object",
+					"properties": {
+						"Population": {
+							"type": "integer"
+						},
+						"Municipality": {
+							"type": "string"
+						},
+						"Region": {
+							"type": "string"
+						}
+					}
+				},
+				"offices": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"officeName": {
+								"type": "string"
+							},
+							"address": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
