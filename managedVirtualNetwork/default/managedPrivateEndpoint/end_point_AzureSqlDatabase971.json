@@ -1,0 +1,10 @@
+{
+	"name": "end_point_AzureSqlDatabase971",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/bc00e100-dc80-4e9c-84f1-f336861c75d3/resourceGroups/sntest/providers/Microsoft.Sql/servers/sisterserver",
+		"groupId": "sqlServer",
+		"fqdns": [
+			"sisterserver.database.windows.net"
+		]
+	}
+}
